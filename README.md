@@ -18,4 +18,4 @@
 ## 設計書
 
 ### 機能一覧
-https://docs.google.com/spreadsheets/d/12q5sr1yBGJMYEEX1-yNX8d97vUr6QYVz6AGBzVhyP_U/edit#gid=0
+https://docs.google.com/spreadsheets/d/12q5sr1yBGJMYEEX1-yNX8d97vUr6QYVz6AGBzVhyP_U/edit?usp=sharing
