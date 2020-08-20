@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_19_081957) do
+ActiveRecord::Schema.define(version: 2020_08_20_044850) do
+
+  create_table "audios", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "bands", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -18,10 +23,65 @@ ActiveRecord::Schema.define(version: 2020_08_19_081957) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "name", null: false
+    t.string "name_kana", null: false
+    t.string "rep_name", null: false
+    t.string "rep_name_kana", null: false
+    t.string "telephone_number"
+    t.string "zip_code"
+    t.string "image_id"
+    t.string "link"
+    t.string "sns"
+    t.string "area"
+    t.string "genre"
+    t.text "introduction"
+    t.boolean "is_left", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_bands_on_email", unique: true
     t.index ["reset_password_token"], name: "index_bands_on_reset_password_token", unique: true
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "body"
+    t.integer "band_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cover_images", force: :cascade do |t|
+    t.integer "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.integer "video_id"
+    t.integer "audio_id"
+    t.integer "band_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "prefectures", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "subscribes", force: :cascade do |t|
+    t.integer "band_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -32,8 +92,24 @@ ActiveRecord::Schema.define(version: 2020_08_19_081957) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "name_kana"
+    t.string "yellpoint"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "videos", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "yells", force: :cascade do |t|
+    t.integer "band_id"
+    t.integer "user_id"
+    t.string "yellpoint"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

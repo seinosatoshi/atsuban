@@ -31,8 +31,19 @@ class DeviseCreateBands < ActiveRecord::Migration[5.2]
       # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
-
-
+      t.string "name", null: false
+      t.string "name_kana", null: false
+      t.string "rep_name", null: false
+      t.string "rep_name_kana", null: false
+      t.string "telephone_number"
+      t.string "zip_code"
+      t.string "image_id"
+      t.string "link"
+      t.string "sns"
+      t.string "area"
+      t.string "genre"
+      t.text "introduction"
+      t.boolean "is_left", null: false, default: true
       t.timestamps null: false
     end
 

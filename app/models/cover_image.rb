@@ -1,0 +1,2 @@
+class CoverImage < ApplicationRecord
+end
