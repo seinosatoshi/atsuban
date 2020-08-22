@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_20_044850) do
+ActiveRecord::Schema.define(version: 2020_08_22_163849) do
 
   create_table "audios", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
   end
 
   create_table "bands", force: :cascade do |t|
@@ -102,6 +103,8 @@ ActiveRecord::Schema.define(version: 2020_08_20_044850) do
   create_table "videos", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "url"
   end
 
   create_table "yells", force: :cascade do |t|

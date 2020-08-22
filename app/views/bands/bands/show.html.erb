@@ -1,2 +1,39 @@
-<h1>Bands#show</h1>
-<p>Find me in app/views/bands/show.html.erb</p>
+<div class="container">
+  <div class="row">
+  	<div class="col-xs-1">
+  		<p>aaaa</p>
+  		<%#= @band.area %>
+  		<%#= @band.link %>
+  		<%#= @band.sns %>
+  	</div>
+  	<div class="col-xs-4">
+      <table>
+        <h2 class="band-headline"><%= @band.name %></h2><p>お気に入り登録</p>
+	    <%= attachment_image_tag current_band, :image, :fill,40,40, format: "jpeg", class: "attachment user profile_image", fallback: "no_image.jpg" %>
+	    <%= @band.introduction %>
+	  </table>
+	</div>
+	<div class="col-xs-6">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/NKN6yZz0qls" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+  <div class="row">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>曲名</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <%#= audio_id.title %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+  	<h1>投稿</h1>
+  </div>
+</div>

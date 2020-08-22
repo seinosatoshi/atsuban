@@ -9,7 +9,7 @@
 	        <th>バンド名</th>
 	        <th>活動地</th>
 	        <th>リンク</th>
-	        <th>SNS</th>
+	        <th>Twitter</th>
 	      </tr>
 	    </thead>
         <body>
@@ -17,7 +17,7 @@
             <% @bands.each do |band| %>
               <tr class="band_<%= band.id %>">
                 <td>
-                    <%= attachment_image_tag current_band, :image, :fill,100,100, format: "jpeg", class: "attachment user profile_image" %>
+                    <%= attachment_image_tag current_band, :image, :fill,40,40, format: "jpeg", class: "attachment user profile_image", fallback: "no_image.jpg" %>
                 </td>
                 <td><%= link_to band.name, bands_band_path(band.id), class: "band_#{band.id}" %></td>
                 <td><%= band.area %></td>

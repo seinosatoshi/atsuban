@@ -10,6 +10,6 @@ class Band < ApplicationRecord
   has_many :comments
   attachment :image
 
-  belongs_to :genres
-  belongs_to :prefectures
+  belongs_to :genres, optional: true
+  belongs_to :prefectures, optional: true
 end
