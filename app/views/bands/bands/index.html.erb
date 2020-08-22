@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+  	<!-- <div class="col-xs-9"> -->
+    <h2 class="band-headline">バンド一覧</h2>
+	  <table class="table table-striped">
+	    <thead>
+	      <tr>
+	        <th></th>
+	        <th>バンド名</th>
+	        <th>活動地</th>
+	        <th>リンク</th>
+	        <th>SNS</th>
+	      </tr>
+	    </thead>
+        <body>
+          <tbody>
+            <% @bands.each do |band| %>
+              <tr class="band_<%= band.id %>">
+                <td>
+                    <%= attachment_image_tag current_band, :image, :fill,100,100, format: "jpeg", class: "attachment user profile_image" %>
+                </td>
+                <td><%= link_to band.name, bands_band_path(band.id), class: "band_#{band.id}" %></td>
+                <td><%= band.area %></td>
+                <td><%= band.link %></td>
+                <td><%= band.sns %></td>
+                <!-- いいね機能 -->
+            
+              </tr>
+            <% end %>
+          </tbody>
+        </body>
+      </table>
+    </div>
+  </div>
+</div>

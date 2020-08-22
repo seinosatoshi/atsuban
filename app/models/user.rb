@@ -3,4 +3,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  has_many :yells
+  has_many :subscribes, dependent: :destroy
+  has_many :comments, dependent: :destroy
+
+  validates :name, presence: true
+  validates :name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
 end
