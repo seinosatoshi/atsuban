@@ -1,4 +1,4 @@
-class Bands::BandsController < ApplicationController
+class BandsController < ApplicationController
   def index
     @bands = Band.all
     @band = current_band
@@ -11,7 +11,7 @@ class Bands::BandsController < ApplicationController
   def edit
     @band = Band.find(params[:id])
     if current_band != @band
-      redirect_to bands_bands_path(current_band)
+      redirect_to bands_path(current_band)
     end
   end
 
@@ -22,7 +22,7 @@ class Bands::BandsController < ApplicationController
   def update
     @band = Band.find(params[:id])
     if @band.update(band_params)
-      redirect_to bands_band_path(@band)
+      redirect_to bands_path(@band)
       flash[:notice]="You have updated user successfully."
     else
       render "edit"

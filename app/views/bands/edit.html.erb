@@ -11,7 +11,7 @@
 	<% end %>
 
   <h2>バンド編集</h2>
-	<%= form_for(@band, url: bands_band_path) do |f| %>
+	<%= form_for(@band) do |f| %>
 	  <% if @band.errors.any? %>
 		<% end %>
 		<h4>Name</h4>

@@ -1,20 +1,16 @@
 Rails.application.routes.draw do
-  namespace :users do
     resources :yells, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
     resources :subscribes, only: [:index]
     resources :users, only: [:show, :edit, :index, :update]
-  end
-
-  namespace :bands do
     resources :posts, only: [:show, :create, :destroy]
     resources :videos, only: [:create, :destroy]
     resources :audios, only: [:create, :destroy]
     resources :cover_images, only: [:create, :destroy]
     resources :prefectures, only: [:index, :show]
     resources :genres, only: [:index, :show]
-    resources :bands, only: [:index, :show, :edit, :new, :update]
-  end
+
+
   root :to => "homes#top"
   get 'homes/about' => 'homes#about', as: 'about'
 
@@ -28,6 +24,8 @@ Rails.application.routes.draw do
   passwords:     'users/passwords',
   registrations: 'users/registrations'
 }
+
+    resources :bands, only: [:index, :show, :edit, :new, :update]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 #                      Prefix Verb   URI Pattern                                                                              Controller#Action

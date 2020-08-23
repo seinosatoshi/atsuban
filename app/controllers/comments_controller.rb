@@ -1,4 +1,4 @@
-class Users::CommentsController < ApplicationController
+class CommentsController < ApplicationController
 	def create
 	  @comment = Band.find(params[:band_id])
 	  @band_comment = current_band.user_comments.new(band_comment_params)

@@ -19,7 +19,7 @@
                 <td>
                     <%= attachment_image_tag current_band, :image, :fill,40,40, format: "jpeg", class: "attachment user profile_image", fallback: "no_image.jpg" %>
                 </td>
-                <td><%= link_to band.name, bands_band_path(band.id), class: "band_#{band.id}" %></td>
+                <td><%= link_to band.name, band_path(band.id), class: "band_#{band.id}" %></td>
                 <td><%= band.area %></td>
                 <td><%= band.link %></td>
                 <td><%= band.sns %></td>
