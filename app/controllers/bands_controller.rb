@@ -5,7 +5,13 @@ class BandsController < ApplicationController
   end
 
   def show
-    @band = Band.find(params[:id])
+    @receiver_band = Band.find(params[:id])
+    @comment = Comment.new
+    #コメントをされたバンドの情報を拾い上げる
+    @comments = Comment.where(receiver_id:@receiver_band.id)
+    #user_idがnilということは、bandが入力したコメントを取得できる
+    @band_comments = Comment.where(receiver_id:@receiver_band.id).where(user_id:nil)
+    @user_comments = Comment.where(receiver_id:@receiver_band.id).where(band_id:nil)
   end
 
   def edit
@@ -22,7 +28,7 @@ class BandsController < ApplicationController
   def update
     @band = Band.find(params[:id])
     if @band.update(band_params)
-      redirect_to bands_path(@band)
+      redirect_to band_path(@band)
       flash[:notice]="You have updated user successfully."
     else
       render "edit"
@@ -34,6 +40,6 @@ class BandsController < ApplicationController
 
   private
   def band_params
-    params.require(:band).permit(:name, :image, :introduction)
+    params.require(:band).permit( :name, :name_kana, :rep_name, :rep_name_kana, :image, :introduction, :link, :sns, :area, :genre, :youtube_url, :tips)
   end
 end

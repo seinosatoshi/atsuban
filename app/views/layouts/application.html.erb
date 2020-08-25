@@ -11,25 +11,28 @@
   </head>
   <header>
     <h1><%= link_to "あつまれ！インディーズバンド", root_path %></h1>
-    <% if band_signed_in? %>
-      <ul>
-        <li><%= link_to "バンドプロフィール編集", edit_band_path(current_band) %></li>
+    <ul class="nav navbar-nav navbar-right">
+      <% if band_signed_in? %>
+        <span class="u h4 text-white strong">
+          ようこそ、<%= current_band.name %>さん！
+        </span>
+        <li><%= link_to "バンド一覧", bands_path %></li>
+        <li><%= link_to "プロフィール編集", edit_band_path(current_band) %></li>
         <li><%= link_to "利用規約", about_path %></li>
         <li><%= link_to "ログアウト", destroy_band_session_path, method: :delete %></li>
-      </ul>
-    <% elsif user_signed_in? %>
-      <ul>
+      <% elsif user_signed_in? %>
+        <span class="u h4 text-white strong">
+          ようこそ、<%= current_user.name %>さん！
+        </span>
         <li><%= link_to "ユーザープロフィール編集", edit_user_path(current_user) %></li>
         <li><%= link_to "利用規約", about_path %></li>
         <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-      </ul>
-    <% else %>
-      <ul>
+      <% else %>
         <li><%= link_to "バンドログイン", new_band_session_path %></li>
         <li><%= link_to "ユーザーログイン", new_user_session_path %></li>
         <li><%= link_to "利用規約", about_path %></li>
-      </ul>
-    <% end %>
+      <% end %>
+    </ul>
   </header>
 
   <body>

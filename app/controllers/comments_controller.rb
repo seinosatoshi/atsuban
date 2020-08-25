@@ -1,20 +1,27 @@
 class CommentsController < ApplicationController
 	def create
-	  @comment = Band.find(params[:band_id])
-	  @band_comment = current_band.user_comments.new(band_comment_params)
-	  @band_comment.band_id = @comment.id
-	  @band_comment.save
+	  @comment = Comment.new(comment_params)
+	  @comment.receiver_id = params[:band_id]
+	  if current_band
+	  	@comment.band_id = current_band.id
+	  elsif current_user
+	  	@comment.user_id = current_user.id
+	  end
+	  @comment.save
+	  redirect_to band_path(params[:band_id])
 	end
 
 	def destroy
-	  @comment = Band.find(params[:band_id])
-	  @user_comment = UserComment.find(params[:id])
-	  @user_comment.destroy
+	  @comment = Comment.find(params[:id])
+	  if (current_user && @comment.user_id == current_user.id) || (current_band && @comment.band_id == current_band.id)
+	  	@comment.destroy
+	  end
+	  redirect_to band_path(params[:band_id])
 	end
 
   private
-    def user_comment_params
-	  params.require(:user_comment).permit(:comment)
+    def comment_params
+	  params.require(:comment).permit(:body)
 	end
 
 end

@@ -67,3 +67,6 @@ gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem 'pry-rails'
 gem 'jquery-rails'
+gem 'font-awesome-sass', '~> 5.4.1'
+gem 'font-awesome-rails'
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'

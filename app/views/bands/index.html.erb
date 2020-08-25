@@ -1,34 +1,71 @@
 <div class="container">
   <div class="row">
-  	<!-- <div class="col-xs-9"> -->
-    <h2 class="band-headline">バンド一覧</h2>
-	  <table class="table table-striped">
-	    <thead>
-	      <tr>
-	        <th></th>
-	        <th>バンド名</th>
-	        <th>活動地</th>
-	        <th>リンク</th>
-	        <th>Twitter</th>
-	      </tr>
-	    </thead>
-        <body>
-          <tbody>
-            <% @bands.each do |band| %>
-              <tr class="band_<%= band.id %>">
-                <td>
-                    <%= attachment_image_tag current_band, :image, :fill,40,40, format: "jpeg", class: "attachment user profile_image", fallback: "no_image.jpg" %>
-                </td>
-                <td><%= link_to band.name, band_path(band.id), class: "band_#{band.id}" %></td>
-                <td><%= band.area %></td>
-                <td><%= band.link %></td>
-                <td><%= band.sns %></td>
-                <!-- いいね機能 -->
-            
-              </tr>
-            <% end %>
-          </tbody>
-        </body>
+    <div class="col-xs-3">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <%= attachment_image_tag current_band, :image, :fill,250,200, format: "jpeg", class: "attachment user profile_image", fallback: "no_image.jpg" %>
+          </tr>
+          <tr>
+            <td>
+              <h3><%= current_band.name %></h3>
+            </td>
+          </tr>
+          <tr>
+            <td><%= current_band.area %></td>
+          </tr>
+          <tr>
+            <td><%= current_band.introduction %></td>
+          </tr>
+        </thead>
+      </table>
+      <%= link_to band_path(current_band.id) do %>
+        <span class="fa fa-search glyphicon glyphicon-wrench btn btn-default col-xs-12"></span>
+      <% end %>
+    </div>
+  	<div class="col-xs-9">
+      <h2 class="band-headline">バンド一覧</h2>
+	    <table class="table table-striped">
+	      <thead>
+  	      <tr>
+  	        <th></th>
+  	        <th>バンド名</th>
+  	        <th>活動地</th>
+  	        <th>HP</th>
+  	        <th>Twitter</th>
+            <th>お知らせ</th>
+  	      </tr>
+  	    </thead>
+        <tbody>
+          <% @bands.each do |band| %>
+            <tr class="band_<%= band.id %>">
+              <td>
+                <div class="img">
+                  <%= attachment_image_tag band, :image, :fill,40,40, format: "jpeg", class: "attachment_image", fallback: "no_image.jpg" %>
+                </div>
+              </td>
+              <td>
+                <h3><%= link_to band.name, band_path(band.id), class: "band_#{band.id}" %></h3>
+              </td>
+              <td>
+                <h4><%= band.area %></h4>
+              </td>
+              <td>
+                <%= link_to @band.link do %>
+                  <%= fa_icon ("home 3x") %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to @band.sns do %>
+                  <%= fa_icon "twitter 3x" %>
+                <% end %>
+              </td>
+              <td>
+                <h4><%= band.tips %></h4>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
       </table>
     </div>
   </div>

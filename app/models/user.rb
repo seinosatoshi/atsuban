@@ -6,7 +6,8 @@ class User < ApplicationRecord
 
   has_many :yells
   has_many :subscribes, dependent: :destroy
-  has_many :comments, dependent: :destroy
+  has_many :comments
+  has_many :bands, through: :comments
 
   validates :name, presence: true
   validates :name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
