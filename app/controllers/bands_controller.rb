@@ -22,14 +22,13 @@ class BandsController < ApplicationController
   end
 
   def new
-    @band = Band.new
   end
 
   def update
     @band = Band.find(params[:id])
     if @band.update(band_params)
       redirect_to band_path(@band)
-      flash[:notice]="You have updated user successfully."
+      flash[:notice]="You have updated successfully."
     else
       render "edit"
     end

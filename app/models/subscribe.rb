@@ -1,4 +1,4 @@
 class Subscribe < ApplicationRecord
-	belongs_to :users
-	belongs_to :bands
+	belongs_to :user
+	belongs_to :band
 end

@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
 
 	def destroy
 	  @comment = Comment.find(params[:id])
-	  if (current_user && @comment.user_id == current_user.id) || (current_band && @comment.band_id == current_band.id)
+	  if (current_user && @comment.user_id == current_user.id) || (current_band && @comment.receiver_id == current_band.id)
 	  	@comment.destroy
 	  end
 	  redirect_to band_path(params[:band_id])

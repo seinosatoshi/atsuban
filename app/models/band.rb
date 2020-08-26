@@ -15,4 +15,11 @@ class Band < ApplicationRecord
 
   # belongs_to :genre, optional: true
   belongs_to :prefecture, optional: true
+
+  validates :name, presence: true
+  validates :name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
+
+  def favorited_by?(user)
+    subscribes.where(user_id: user.id).exists?
+  end
 end
