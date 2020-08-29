@@ -72,3 +72,7 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 group :development do
   gem 'rubocop', require: false
 end
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end

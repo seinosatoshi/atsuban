@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
   def show
+  	@user = current_user
+  	@band = Band.find(params[:id])
+  	@subscribes = Subscribe.where(user_id: @user.id)
   end
 
   def edit

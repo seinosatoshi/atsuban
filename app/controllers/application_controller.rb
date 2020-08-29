@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 	  if current_user.nil?
 	    bands_path
 	  else
-	    users_path
+	    user_path(current_user.id)
 	  end
 	end
 

@@ -1,7 +1,9 @@
 <div class="container">
   <div class="row">
-    <% if flash[:alert] %>
-      <p><%= flash[:alert] %><%= current_band.name %>さん</p>
+    <% if band_signed_in? %>
+      <% if flash[:alert] %>
+        <p><%= flash[:alert] %><%= current_band.name %>さん</p>
+      <% end %>
     <% end %>
     <div class="index-left col-xs-3">
       <% if @band != nil %>
@@ -39,7 +41,7 @@
             </tr>
           </thead>
         </table>
-        <%= link_to users_path(current_user.id) do %>
+        <%= link_to user_path(current_user.id) do %>
           <span class="fa fa-search glyphicon glyphicon-wrench btn btn-default col-xs-12"></span>
         <% end %>
       <% end %>
