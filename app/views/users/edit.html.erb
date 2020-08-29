@@ -1,0 +1,27 @@
+<div class="col-md-5 col-md-offset-3">
+  <div class="body">
+	<% if @user.errors.any? %>
+	  <div id="error_explanation" class="alert alert-danger">
+		<%= @user.errors.count %> errors prohibited this obj from being saved:
+		  <ul>
+		    <% @user.errors.full_messages.each do |message| %>
+		      <li><%= message %></li>
+		    <% end %>
+		  </ul>
+	  </div>
+	<% end %>
+
+	<h2>編集</h2>
+    <%= form_for(@user) do |f| %>
+      <% if @user.errors.any? %>
+      <% end %>
+      <h4 class="edit-space">名前(フリガナ)</h4>
+      <%= f.text_field :name_kana, class: "form-control offset-1 col-5" %>
+      <h4 class="edit-space">名前</h4>
+      <%= f.text_field :name, class: "form-control offset-1 col-5" %>
+      <h4 class="edit-space">ユーザーアイコン</h4>
+      <%= f.attachment_field :image %>
+      <%= f.submit '更新', class: "edit-btn btn-lg btn-primary form-control offset-1 col-5" %>
+    <% end %>
+  </div>
+</div>

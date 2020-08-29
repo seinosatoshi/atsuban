@@ -1,0 +1,212 @@
+<div class="container">
+  <div class="row">
+  	<div class="col-xs-2">
+      <table>
+        <tr><br><br><br><br>
+          <td>
+            <h4>代表者：<%= @receiver_band.rep_name %></h4>
+          </td>
+        </tr>
+        <tr>
+      		<td>
+            <h4>活動地：<%= @receiver_band.area %></h4>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4>ジャンル：<%= @receiver_band.genre %></h4>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4>お知らせ：<%= @receiver_band.tips %></h4>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="icon">
+              <%= link_to @receiver_band.link do %>
+                <%= icon("fas", "home fa-3x") %>
+              <% end %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="icon">
+              <%= link_to @receiver_band.sns do %>
+                <%= icon("fab", "twitter fa-3x") %>
+              <% end %>
+            </div>
+          </td>
+        </tr>
+      </table>
+  	</div>
+  	<div class="col-xs-4">
+      <table>
+        <tr>
+          <th>
+            <h2 class="band-headline"><%= @receiver_band.name %>
+              <% if user_signed_in? %>
+                <% if @receiver_band.favorited_by?(current_user) %>
+                  <%= link_to band_subscribe_path(@receiver_band), method: :delete do %>
+                    <%= icon("fas", "star") %>
+                  <% end %>
+                <% else %>
+                  <%= link_to band_subscribes_path(@receiver_band), method: :post do %>
+                    <%= icon("far", "star") %>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </h2>
+          </th>
+        </tr>
+  	    <tr><th>
+          <%= attachment_image_tag @receiver_band, :image, :fill,350,250, format: "jpeg", class: "attachment user profile_image", fallback: "no_image.jpg" %></th>
+        </tr>
+  	    <tr><th>
+          <p><%= @receiver_band.introduction %></p></th>
+        </tr>
+	    </table>
+	  </div>
+  	<div class="video col-xs-4">
+      <iframe width="560" height="315" src="<%= @receiver_band.youtube_url %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+  <div class="row">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>曲名</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <%#= audio_id.title %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <h4>コメント</h4>
+    <div>
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="active" role="presentation">
+          <a aria-controls="tab_a" data-toggle="tab" href="#tab_a" role="tab">全体コメント</a>
+        </li>
+        <li role="presentation">
+          <a aria-controls="tab_b" data-toggle="tab" href="#tab_b" role="tab">ユーザーからのコメント</a>
+        </li>
+        <li role="presentation">
+          <a aria-controls="tab_c" data-toggle="tab" href="#tab_c" role="tab">バンドからのコメント</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="tab_a" role="tabpanel">
+          <table class="table table-striped">
+            <% @comments.each do |comment| %>
+              <tr>
+                <th>コメント入力者</th>
+                <th>コメント内容</th>
+                <th></th>
+              </tr>
+              <tr>
+                <td>
+                   <%= comment.band ? comment.band.name : comment.user.name %>
+                </td>
+                <td>
+                  <%= comment.body %>
+                </td>
+                <td>
+                  <% if user_signed_in? %>
+                    <% if comment.user_id == current_user.id %>
+                      <%= link_to "Destroy", band_comment_path(@receiver_band.id, comment.id), method: :delete , class: "btn-sm btn-danger", remote: false %>
+                    <% end %>
+                  <% elsif band_signed_in? %>
+                    <% if comment.band_id == current_band.id %>
+                      <%= link_to "Destroy", band_comment_path(@receiver_band.id, comment.id), method: :delete , class: "btn-sm btn-danger", remote: false %>
+                    <% elsif @receiver_band.id == current_band.id%>
+                      <%= link_to "Destroy", band_comment_path(@receiver_band.id, comment.id), method: :delete , class: "btn-sm btn-danger", remote: false %>
+                    <% end %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
+        <div class="tab-pane" id="tab_b" role="tabpanel">
+          <table class="table table-striped">
+            <% @user_comments.each do |comment| %>
+              <tr>
+                <th>コメント入力者</th>
+                <th>コメント内容</th>
+                <th></th>
+              </tr>
+              <tr>
+                <td>
+                   <%= comment.user.name %>
+                </td>
+                <td>
+                  <%= comment.body %>
+                </td>
+                <td>
+                  <% if user_signed_in? %>
+                    <% if comment.user_id == current_user.id %>
+                      <%= link_to "Destroy", band_comment_path(@receiver_band.id, comment.id), method: :delete , class: "btn-sm btn-danger", remote: false %>
+                    <% end %>
+                  <% elsif band_signed_in? %>
+                    <% if comment.band_id == current_band.id %>
+                      <%= link_to "Destroy", band_comment_path(@receiver_band.id, comment.id), method: :delete , class: "btn-sm btn-danger", remote: false %>
+                    <% elsif @receiver_band.id == current_band.id%>
+                      <%= link_to "Destroy", band_comment_path(@receiver_band.id, comment.id), method: :delete , class: "btn-sm btn-danger", remote: false %>
+                    <% end %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
+        <div class="tab-pane" id="tab_c" role="tabpanel">
+          <table class="table table-striped">
+            <% @band_comments.each do |comment| %>
+              <tr>
+                <th>コメント入力者</th>
+                <th>コメント内容</th>
+                <th></th>
+              </tr>
+              <tr>
+                <td>
+                   <%= comment.band.name %>
+                </td>
+                <td>
+                  <%= comment.body %>
+                </td>
+                <td>
+                  <% if user_signed_in? %>
+                    <% if comment.user_id == current_user.id %>
+                      <%= link_to "Destroy", band_comment_path(@receiver_band.id, comment.id), method: :delete , class: "btn-sm btn-danger", remote: false %>
+                    <% end %>
+                  <% elsif band_signed_in? %>
+                    <% if comment.band_id == current_band.id %>
+                      <%= link_to "Destroy", band_comment_path(@receiver_band.id, comment.id), method: :delete , class: "btn-sm btn-danger", remote: false %>
+                    <% elsif @receiver_band.id == current_band.id%>
+                      <%= link_to "Destroy", band_comment_path(@receiver_band.id, comment.id), method: :delete , class: "btn-sm btn-danger", remote: false %>
+                    <% end %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5 col-md-offset-3">
+      <%= form_for(@comment,url:band_comments_path(@receiver_band.id)) do |f| %>
+        <%= f.text_area :body, class: "form-control offset-1 col-5" %>
+        <%= f.submit '投稿', class: "form-control offset-1 col-5" %>
+      <% end %>
+    </div>
+  </div>
+</div>

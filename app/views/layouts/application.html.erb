@@ -10,26 +10,32 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <header>
-    <h1><%= link_to "あつまれ！インディーズバンド", root_path %></h1>
-    <% if band_signed_in? %>
-      <ul>
-        <li><%= link_to "バンドプロフィール編集", edit_bands_band_path(current_band) %></li>
-        <li><%= link_to "利用規約", about_path %></li>
-        <li><%= link_to "ログアウト", destroy_band_session_path, method: :delete %></li>
-      </ul>
-    <% elsif user_signed_in? %>
-      <ul>
-        <li><%= link_to "ユーザープロフィール編集", edit_users_user_path(current_user) %></li>
-        <li><%= link_to "利用規約", about_path %></li>
-        <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-      </ul>
-    <% else %>
-      <ul>
-        <li><%= link_to "バンドログイン", new_band_session_path %></li>
-        <li><%= link_to "ユーザーログイン", new_user_session_path %></li>
-        <li><%= link_to "利用規約", about_path %></li>
-      </ul>
-    <% end %>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <h1><%= link_to "あつまれ！インディーズバンド", root_path %></h1>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarEexample1">
+          <ul class="nav navbar-nav navbar-right">
+            <% if band_signed_in? %>
+              <li><%= link_to "バンド一覧", bands_path %></li>
+              <li><%= link_to "プロフィール編集", edit_band_path(current_band) %></li>
+              <li><%= link_to "利用規約", about_path %></li>
+              <li><%= link_to "ログアウト", destroy_band_session_path, method: :delete %></li>
+            <% elsif user_signed_in? %>
+              <li><%= link_to "マイページ", user_path(current_user.id) %></li>
+              <li><%= link_to "バンドを探す", bands_path %></li>
+              <li><%= link_to "プロフィール編集", edit_user_path(current_user) %></li>
+              <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+            <% else %>
+              <li><%= link_to "バンドログイン", new_band_session_path %></li>
+              <li><%= link_to "ユーザーログイン", new_user_session_path %></li>
+              <li><%= link_to "利用規約", about_path %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
   </header>
 
   <body>

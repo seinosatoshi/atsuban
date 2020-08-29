@@ -12,5 +12,32 @@
  *
  *= require_tree .
  *= require_self
+
  */
 @import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+ul{
+	list-style:none;
+}
+
+.edit-btn{
+	margin-top:20px;
+}
+
+.attachment_image{
+	width:100px;
+}
+
+.icon{
+	text-align:center;
+}
+
+.index-left{
+	margin-top:10px;
+}
+
+.video{
+	margin-top:30px;
+}
