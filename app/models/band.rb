@@ -10,14 +10,20 @@ class Band < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :users, through: :comments
   has_many :receive_bands, through: :comments, class_name: 'Band', foreign_key: 'receiver_id'
+  has_many :audios, dependent: :destroy
 
   attachment :image
 
   # belongs_to :genre, optional: true
   belongs_to :prefecture, optional: true
 
+  accepts_nested_attributes_for :audios, allow_destroy: true
+  accepts_nested_attributes_for :posts, allow_destroy: true
+
   validates :name, presence: true
   validates :name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
+
+  mount_uploader :sound_source, AudioFileUploader
 
   def favorited_by?(user)
     subscribes.where(user_id: user.id).exists?

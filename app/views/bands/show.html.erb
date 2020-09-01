@@ -77,6 +77,15 @@
     <table class="table table-striped">
       <thead>
         <tr>
+          <%= form_with(model: @receiver_band, url: "#", method: :post) do |f| %>
+            <div class="form-group">
+              <%= f.label :ファイルを選択して曲を追加しよう %>
+              <%= f.file_field :file %>
+              <%= f.submit '投稿' %>
+            </div>
+          <% end %>
+        </tr>
+        <tr>
           <th>曲名</th>
         </tr>
       </thead>

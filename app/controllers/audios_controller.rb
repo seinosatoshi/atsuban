@@ -1,7 +1,9 @@
 class AudiosController < ApplicationController
-  def create
+  def new
   end
 
-  def destroy
-  end
+  # private
+  #  def audio_params
+  #  	params.require(:audio).permit( :sound_source, :name)
+  #  end
 end

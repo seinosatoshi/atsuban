@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_25_125056) do
+ActiveRecord::Schema.define(version: 2020_08_31_120132) do
 
   create_table "audios", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.integer "post_id"
   end
 
   create_table "bands", force: :cascade do |t|
@@ -58,6 +59,7 @@ ActiveRecord::Schema.define(version: 2020_08_25_125056) do
     t.integer "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image_id"
   end
 
   create_table "genres", force: :cascade do |t|

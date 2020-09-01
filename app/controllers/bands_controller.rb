@@ -35,10 +35,14 @@ class BandsController < ApplicationController
   end
 
   def create
+    @band = Band.find(params[:band_id])
+    @audio = current_band.audios.new(audio_params)
+    @audio.save!
+    redirect_to request.referer
   end
 
   private
   def band_params
-    params.require(:band).permit( :name, :name_kana, :rep_name, :rep_name_kana, :image, :introduction, :link, :sns, :area, :genre, :youtube_url, :tips)
+    params.require(:band).permit( :name, :name_kana, :rep_name, :rep_name_kana, :image, :introduction, :link, :sns, :area, :genre, :youtube_url, :tips, :sound_source)
   end
 end
