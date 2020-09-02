@@ -78,3 +78,4 @@ group :production do
 end
 gem 'carrierwave'
 gem 'carrierwave-audio'
+gem 'audiojs-rails'

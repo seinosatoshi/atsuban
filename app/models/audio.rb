@@ -3,6 +3,6 @@ class Audio < ApplicationRecord
 
   belongs_to :band
 
-  validates :name, presence: true
+  # validates :name, presence: true
   validates :file, presence: true
 end

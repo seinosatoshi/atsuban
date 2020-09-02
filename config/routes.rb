@@ -22,7 +22,7 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
       resources :subscribes, only: [:create, :destroy]
       resources :audios, only: [:create, :destroy]
-    # resources :posts, only: [:show, :create, :destroy]
+      resources :posts, only: [:show, :create, :destroy]
     end
     resources :users, only: [:show, :edit, :index, :update]
 #                    Prefix Verb   URI Pattern                                                Controller#Action

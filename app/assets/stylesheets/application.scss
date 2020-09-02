@@ -22,6 +22,19 @@ ul{
 	list-style:none;
 }
 
+.main-container {
+  background-image: url('atsuban1.jpg');
+  height: 500px;
+  width:1000px;
+  background-repeat: no-repeat;
+  background-size:contain;
+  margin-left: 200px;
+}
+
+.main{
+	background-color: #FFFFEE;
+}
+
 .edit-btn{
 	margin-top:20px;
 }

@@ -12,7 +12,10 @@
 //
 //= require jquery
 //= require rails-ujs
+//= require turbolinks
 //= require activestorage
 //= require bootstrap-sprockets
 //= require twitter/bootstrap
 //= require_tree .
+//= require audiojs
+//

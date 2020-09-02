@@ -77,22 +77,27 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <%= form_with(model: @receiver_band, url: "#", method: :post) do |f| %>
-            <div class="form-group">
-              <%= f.label :ファイルを選択して曲を追加しよう %>
-              <%= f.file_field :file %>
-              <%= f.submit '投稿' %>
-            </div>
+          <% if band_signed_in? %>
+            <%= form_with(model:[@receiver_band,@audio]) do |f| %>
+              <div class="form-group">
+                <%= f.label :mp3ファイルを選択して曲を追加しよう, class: "form-group" %>
+                <%= f.file_field :file, class: "form-group" %>
+                <%= f.submit '投稿' %>
+              </div>
+            <% end %>
           <% end %>
         </tr>
         <tr>
-          <th>曲名</th>
+          <th><h4>曲一覧</h4></th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>
-            <%#= audio_id.title %>
+            <% @audios.each do |audio| %>
+              <%= audio_tag(audio.file.url,id:"audio") %>
+            <% end %>
+            <%#= link_to "Destroy", band_audio_path(@receiver_band.id, @audio.id), method: :delete , class: "btn-sm btn-danger", remote: false %>
           </td>
         </tr>
       </tbody>
@@ -219,3 +224,9 @@
     </div>
   </div>
 </div>
+
+<script>
+  audiojs.events.ready(function() {
+    var as = audiojs.createAll();
+  });
+</script>

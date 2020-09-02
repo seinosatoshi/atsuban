@@ -5,7 +5,9 @@ class BandsController < ApplicationController
   end
 
   def show
+    @audio = Audio.new
     @receiver_band = Band.find(params[:id])
+    @audios = @receiver_band.audios
     @comment = Comment.new
     #コメントをされたバンドの情報を拾い上げる
     @comments = Comment.where(receiver_id:@receiver_band.id)
@@ -35,14 +37,10 @@ class BandsController < ApplicationController
   end
 
   def create
-    @band = Band.find(params[:band_id])
-    @audio = current_band.audios.new(audio_params)
-    @audio.save!
-    redirect_to request.referer
   end
 
   private
   def band_params
-    params.require(:band).permit( :name, :name_kana, :rep_name, :rep_name_kana, :image, :introduction, :link, :sns, :area, :genre, :youtube_url, :tips, :sound_source)
+    params.require(:band).permit( :name, :name_kana, :rep_name, :rep_name_kana, :image, :introduction, :link, :sns, :area, :genre, :youtube_url, :tips)
   end
 end
