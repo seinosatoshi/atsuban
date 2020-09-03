@@ -59,13 +59,29 @@
                 <% end %>
               <% end %>
             </h2>
+            <div class="band-headline">
+              <% if user_signed_in? %>
+                <h5>エール数：<%= @yells.count %></h5>
+                <% if current_user.already_yelled_within_a_day?(@receiver_band) %>
+                  <h5>エール済み(1日1回まで。24時間後にお試しください)</h5>
+                <% elsif %>
+                  <%= link_to band_yells_path(@receiver_band), method: :post do %>
+                    <h5>エールを送る<%= icon("far", "heart") %></h5>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </div>
           </th>
         </tr>
-  	    <tr><th>
-          <%= attachment_image_tag @receiver_band, :image, :fill,350,250, format: "jpeg", class: "attachment user profile_image", fallback: "no_image.jpg" %></th>
+  	    <tr>
+          <th>
+            <%= attachment_image_tag @receiver_band, :image, :fill,350,250, format: "jpeg", class: "attachment user profile_image", fallback: "no_image.jpg" %>
+          </th>
         </tr>
-  	    <tr><th>
-          <p><%= @receiver_band.introduction %></p></th>
+  	    <tr>
+          <th>
+            <p><%= @receiver_band.introduction %></p>
+          </th>
         </tr>
 	    </table>
 	  </div>
@@ -73,38 +89,51 @@
       <iframe width="560" height="315" src="<%= @receiver_band.youtube_url %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
   </div>
+  <div class="audio">
+    <% if band_signed_in? %>
+      <% if @receiver_band.id == current_band.id %>
+        <%= form_with(model:[@receiver_band,@audio]) do |f| %>
+          <div class="form">
+            <%= f.label :title,"mp3ファイルを選択して曲を追加しよう！", class: "form-group" %>
+            <div class="form-inline">
+              <%= f.file_field :file, class: "form-group" %>
+              <%= f.submit '投稿' %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
   <div class="row">
     <table class="table table-striped">
       <thead>
         <tr>
-          <% if band_signed_in? %>
-            <%= form_with(model:[@receiver_band,@audio]) do |f| %>
-              <div class="form-group">
-                <%= f.label :mp3ファイルを選択して曲を追加しよう, class: "form-group" %>
-                <%= f.file_field :file, class: "form-group" %>
-                <%= f.submit '投稿' %>
-              </div>
-            <% end %>
-          <% end %>
-        </tr>
-        <tr>
-          <th><h4>曲一覧</h4></th>
+          <th><h3>曲一覧</h3></th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>
-            <% @audios.each do |audio| %>
+        <% @audios.each do |audio| %>
+          <tr>
+            <td>
+              <%= audio[:file] %>
+            </td>
+            <td>
               <%= audio_tag(audio.file.url,id:"audio") %>
-            <% end %>
-            <%#= link_to "Destroy", band_audio_path(@receiver_band.id, @audio.id), method: :delete , class: "btn-sm btn-danger", remote: false %>
-          </td>
-        </tr>
+            </td>
+            <td>
+              <% if band_signed_in? %>
+                <% if @receiver_band.id == current_band.id %>
+                  <%= link_to "削除", band_audio_path(@receiver_band.id, audio.id), method: :delete , class: "btn-sm btn-danger", remote: false %>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </div>
   <div class="row">
-    <h4>コメント</h4>
+    <h3>コメント</h3>
     <div>
       <ul class="nav nav-tabs" role="tablist">
         <li class="active" role="presentation">
@@ -124,14 +153,18 @@
               <tr>
                 <th>コメント入力者</th>
                 <th>コメント内容</th>
+                <th>作成日</th>
                 <th></th>
               </tr>
               <tr>
                 <td>
-                   <%= comment.band ? comment.band.name : comment.user.name %>
+                  <%= comment.band ? comment.band.name : comment.user.name %>
                 </td>
                 <td>
                   <%= comment.body %>
+                </td>
+                <td>
+                  <%= comment.created_at %>
                 </td>
                 <td>
                   <% if user_signed_in? %>
@@ -141,7 +174,7 @@
                   <% elsif band_signed_in? %>
                     <% if comment.band_id == current_band.id %>
                       <%= link_to "Destroy", band_comment_path(@receiver_band.id, comment.id), method: :delete , class: "btn-sm btn-danger", remote: false %>
-                    <% elsif @receiver_band.id == current_band.id%>
+                    <% elsif @receiver_band.id == current_band.id %>
                       <%= link_to "Destroy", band_comment_path(@receiver_band.id, comment.id), method: :delete , class: "btn-sm btn-danger", remote: false %>
                     <% end %>
                   <% end %>
@@ -156,14 +189,18 @@
               <tr>
                 <th>コメント入力者</th>
                 <th>コメント内容</th>
+                <th>作成日</th>
                 <th></th>
               </tr>
               <tr>
                 <td>
-                   <%= comment.user.name %>
+                  <%= comment.user.name %>
                 </td>
                 <td>
                   <%= comment.body %>
+                </td>
+                <td>
+                  <%= comment.created_at %>
                 </td>
                 <td>
                   <% if user_signed_in? %>
@@ -173,7 +210,7 @@
                   <% elsif band_signed_in? %>
                     <% if comment.band_id == current_band.id %>
                       <%= link_to "Destroy", band_comment_path(@receiver_band.id, comment.id), method: :delete , class: "btn-sm btn-danger", remote: false %>
-                    <% elsif @receiver_band.id == current_band.id%>
+                    <% elsif @receiver_band.id == current_band.id %>
                       <%= link_to "Destroy", band_comment_path(@receiver_band.id, comment.id), method: :delete , class: "btn-sm btn-danger", remote: false %>
                     <% end %>
                   <% end %>
@@ -188,14 +225,18 @@
               <tr>
                 <th>コメント入力者</th>
                 <th>コメント内容</th>
+                <th>作成日</th>
                 <th></th>
               </tr>
               <tr>
                 <td>
-                   <%= comment.band.name %>
+                  <%= comment.band.name %>
                 </td>
                 <td>
                   <%= comment.body %>
+                </td>
+                <td>
+                  <%= comment.created_at %>
                 </td>
                 <td>
                   <% if user_signed_in? %>
@@ -205,7 +246,7 @@
                   <% elsif band_signed_in? %>
                     <% if comment.band_id == current_band.id %>
                       <%= link_to "Destroy", band_comment_path(@receiver_band.id, comment.id), method: :delete , class: "btn-sm btn-danger", remote: false %>
-                    <% elsif @receiver_band.id == current_band.id%>
+                    <% elsif @receiver_band.id == current_band.id %>
                       <%= link_to "Destroy", band_comment_path(@receiver_band.id, comment.id), method: :delete , class: "btn-sm btn-danger", remote: false %>
                     <% end %>
                   <% end %>

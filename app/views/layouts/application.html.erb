@@ -18,6 +18,7 @@
         <div class="collapse navbar-collapse" id="navbarEexample1">
           <ul class="nav navbar-nav navbar-right">
             <% if band_signed_in? %>
+              <li><%= link_to "マイページ", band_path(current_band.id) %></li>
               <li><%= link_to "バンド一覧", bands_path %></li>
               <li><%= link_to "プロフィール編集", edit_band_path(current_band) %></li>
               <li><%= link_to "利用規約", about_path %></li>
@@ -41,4 +42,9 @@
   <body>
     <%= yield %>
   </body>
+  <footer class="footer text-white", style="background-color: #EEEEEE;">
+    <div class="container text-center mt-3">
+      <p class="footer-text">© 2020 sein inc.</p>
+    </div>
+  </footer>
 </html>

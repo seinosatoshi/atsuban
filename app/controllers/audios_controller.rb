@@ -11,7 +11,10 @@ class AudiosController < ApplicationController
 
   def destroy
   	@band = Band.find(params[:band_id])
-  	@band.destroy
+  	@audio = Audio.find(params[:id])
+  	if current_band.id == @band.id
+  	  @audio.destroy
+  	end
   	redirect_to request.referer
   end
 

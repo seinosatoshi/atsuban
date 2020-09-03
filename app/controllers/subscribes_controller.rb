@@ -16,3 +16,4 @@ class SubscribesController < ApplicationController
   	redirect_to request.referer
   end
 end
+

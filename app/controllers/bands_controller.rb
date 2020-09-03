@@ -7,6 +7,7 @@ class BandsController < ApplicationController
   def show
     @audio = Audio.new
     @receiver_band = Band.find(params[:id])
+    @yells = Yell.where(user_id: current_user.id).where(band_id: @receiver_band.id)
     @audios = @receiver_band.audios
     @comment = Comment.new
     #コメントをされたバンドの情報を拾い上げる

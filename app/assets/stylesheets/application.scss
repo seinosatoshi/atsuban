@@ -22,17 +22,26 @@ ul{
 	list-style:none;
 }
 
-.main-container {
+main{
+	text-align: center;
+	/*background-color: #FFDBC9;*/
+}
+
+/*.main-container {
   background-image: url('atsuban1.jpg');
   height: 500px;
   width:1000px;
   background-repeat: no-repeat;
-  background-size:contain;
-  margin-left: 200px;
+  background-size:cover;
+  margin-left: 150px;
+  background-color: red;
 }
 
-.main{
+main{
 	background-color: #FFFFEE;
+}*/
+.form{
+	margin-top: 20px;
 }
 
 .edit-btn{
@@ -53,4 +62,8 @@ ul{
 
 .video{
 	margin-top:30px;
+}
+
+.footer{
+	margin-top: 50px;
 }
