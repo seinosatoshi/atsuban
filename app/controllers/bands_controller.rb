@@ -7,7 +7,6 @@ class BandsController < ApplicationController
   def show
     @audio = Audio.new
     @receiver_band = Band.find(params[:id])
-    @yells = Yell.where(user_id: current_user.id).where(band_id: @receiver_band.id)
     @audios = @receiver_band.audios
     @comment = Comment.new
     #コメントをされたバンドの情報を拾い上げる
@@ -15,6 +14,11 @@ class BandsController < ApplicationController
     #user_idがnilということは、bandが入力したコメントを取得できる
     @band_comments = Comment.where(receiver_id:@receiver_band.id).where(user_id:nil)
     @user_comments = Comment.where(receiver_id:@receiver_band.id).where(band_id:nil)
+    unless band_signed_in?
+      @yells = Yell.where(user_id: current_user.id).where(band_id: @receiver_band.id)
+    else
+      @yells = Yell.where(band_id: @receiver_band.id)
+    end
   end
 
   def edit
@@ -31,7 +35,7 @@ class BandsController < ApplicationController
     @band = Band.find(params[:id])
     if @band.update(band_params)
       redirect_to band_path(@band)
-      flash[:notice]="You have updated successfully."
+      flash[:notice]="更新しました."
     else
       render "edit"
     end

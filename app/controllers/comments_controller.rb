@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
 	  end
 	  @comment.save
 	  redirect_to band_path(params[:band_id])
+	  flash[:success] = 'コメントが追加されました'
 	end
 
 	def destroy
@@ -17,6 +18,7 @@ class CommentsController < ApplicationController
 	  	@comment.destroy
 	  end
 	  redirect_to band_path(params[:band_id])
+	  flash[:success] = 'コメントが削除されました'
 	end
 
   private

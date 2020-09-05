@@ -5,6 +5,7 @@ class YellsController < ApplicationController
   	yell = current_user.yells.new(band_id: @band.id)
   	yell.save
   	redirect_to request.referer
+  	flash[:success] = 'エールを送りました'
   end
 
   def destroy

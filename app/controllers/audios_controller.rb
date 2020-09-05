@@ -7,6 +7,7 @@ class AudiosController < ApplicationController
     @audio = @band.audios.new(audio_params)
     @audio.save!
     redirect_to band_path @band
+    flash[:success] = '曲を追加しました'
   end
 
   def destroy
@@ -14,6 +15,7 @@ class AudiosController < ApplicationController
   	@audio = Audio.find(params[:id])
   	if current_band.id == @band.id
   	  @audio.destroy
+  	  flash[:success] = '曲を削除しました'
   	end
   	redirect_to request.referer
   end

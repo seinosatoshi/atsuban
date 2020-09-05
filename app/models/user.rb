@@ -17,9 +17,11 @@ class User < ApplicationRecord
   def already_yelled_within_a_day?(band)
   	result = yells.where(band_id: band.id)
   	if result.size == 0
+  	  return false
+  	elsif yells.where(band_id: band.id).last.created_at.to_time > 1.day.ago
   	  return true
   	else
-  	  return yells.where(band_id: band.id).last.created_at.to_time > 1.day.ago
+  	  return false
     end
   end
 end
