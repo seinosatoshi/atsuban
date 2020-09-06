@@ -10,7 +10,7 @@
         <table class="table table-striped">
           <thead>
             <tr>
-              <%= attachment_image_tag current_band, size: "265x200", format: "jpeg", class: "attachment user profile_image", fallback: "no_image.jpg" %>
+              <%= attachment_image_tag current_band, :image, size: "265x200", format: "jpeg", class: "attachment user profile_image", fallback: "no_image.jpg" %>
             </tr>
             <tr>
               <td>
@@ -32,7 +32,7 @@
         <table class="table table-striped">
           <thead>
             <tr>
-              <%= attachment_image_tag current_user, size: "265x200", format: "jpeg", class: "attachment user profile_image", fallback: "no_image.jpg" %>
+              <%= attachment_image_tag current_band, :image, size: "265x200", format: "jpeg", class: "attachment user profile_image", fallback: "no_image.jpg" %>
             </tr>
             <tr>
               <td>
@@ -64,7 +64,7 @@
             <tr class="band_<%= band.id %>">
               <td>
                 <div class="img">
-                  <%= attachment_image_tag band, size: "40x40", format: "jpeg", class: "attachment_image", fallback: "no_image.jpg" %>
+                  <%= attachment_image_tag current_band, :image, size: "40x40", format: "jpeg", class: "attachment user profile_image", fallback: "no_image.jpg" %>
                 </div>
               </td>
               <td>
