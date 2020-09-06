@@ -8,7 +8,9 @@ class CommentsController < ApplicationController
 	  	@comment.user_id = current_user.id
 	  end
 	  @comment.save
-	  redirect_to band_path(params[:band_id])
+	  @comments = Comment.where(receiver_id:@comment.receiver_id)
+      @band_comments = Comment.where(receiver_id:@comment.receiver_id).where(user_id:nil)
+      @user_comments = Comment.where(receiver_id:@comment.receiver_id).where(band_id:nil)
 	  flash[:success] = 'コメントが追加されました'
 	end
 
@@ -17,7 +19,9 @@ class CommentsController < ApplicationController
 	  if (current_user && @comment.user_id == current_user.id) || (current_band && @comment.receiver_id == current_band.id)
 	  	@comment.destroy
 	  end
-	  redirect_to band_path(params[:band_id])
+	  @comments = Comment.where(receiver_id:@comment.receiver_id)
+      @band_comments = Comment.where(receiver_id:@comment.receiver_id).where(user_id:nil)
+      @user_comments = Comment.where(receiver_id:@comment.receiver_id).where(band_id:nil)
 	  flash[:success] = 'コメントが削除されました'
 	end
 

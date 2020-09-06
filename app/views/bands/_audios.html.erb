@@ -1,0 +1,17 @@
+<% audios.each do |audio| %>
+  <tr>
+    <td>
+      <%= audio[:file] %>
+    </td>
+    <td>
+      <%= audio_tag(audio.file.url,id:"audio") %>
+    </td>
+    <td>
+      <% if band_signed_in? %>
+        <% if band_id == current_band.id %>
+          <%= link_to "削除", band_audio_path(band_id, audio.id), method: :delete , "data-confirm" => "この曲を削除しますか？", class: "btn-sm btn-danger", remote: false %>
+        <% end %>
+      <% end %>
+    </td>
+  </tr>
+<% end %>

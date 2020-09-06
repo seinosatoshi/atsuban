@@ -1,0 +1,123 @@
+<div>
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="active" role="presentation">
+      <a aria-controls="tab_a" data-toggle="tab" href="#tab_a" role="tab">全体コメント</a>
+    </li>
+    <li role="presentation">
+      <a aria-controls="tab_b" data-toggle="tab" href="#tab_b" role="tab">ユーザーからのコメント</a>
+    </li>
+    <li role="presentation">
+      <a aria-controls="tab_c" data-toggle="tab" href="#tab_c" role="tab">バンドからのコメント</a>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab_a" role="tabpanel">
+      <table class="table table-striped">
+        <% comments.each do |comment| %>
+          <tr>
+            <th>コメント入力者</th>
+            <th>コメント内容</th>
+            <th>作成日</th>
+            <th></th>
+          </tr>
+          <tr>
+            <td>
+              <%= comment.band ? comment.band.name : comment.user.name %>
+            </td>
+            <td>
+              <%= comment.body %>
+            </td>
+            <td>
+              <%= comment.created_at %>
+            </td>
+            <td>
+              <% if user_signed_in? %>
+                <% if comment.user_id == current_user.id %>
+                  <%= link_to "Destroy", band_comment_path(receiver_band_id, comment.id), method: :delete , "data-confirm" => "このコメントを削除しますか？", class: "btn-sm btn-danger", remote: true %>
+                <% end %>
+              <% elsif band_signed_in? %>
+                <% if comment.band_id == current_band.id %>
+                  <%= link_to "Destroy", band_comment_path(receiver_band_id, comment.id), method: :delete , "data-confirm" => "このコメントを削除しますか？", class: "btn-sm btn-danger", remote: true %>
+                <% elsif receiver_band_id == current_band.id %>
+                  <%= link_to "Destroy", band_comment_path(receiver_band_id, comment.id), method: :delete , "data-confirm" => "このコメントを削除しますか？", class: "btn-sm btn-danger", remote: true %>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class="tab-pane" id="tab_b" role="tabpanel">
+      <table class="table table-striped">
+        <% user_comments.each do |comment| %>
+          <tr>
+            <th>コメント入力者</th>
+            <th>コメント内容</th>
+            <th>作成日</th>
+            <th></th>
+          </tr>
+          <tr>
+            <td>
+              <%= comment.user.name %>
+            </td>
+            <td>
+              <%= comment.body %>
+            </td>
+            <td>
+              <%= comment.created_at %>
+            </td>
+            <td>
+              <% if user_signed_in? %>
+                <% if comment.user_id == current_user.id %>
+                  <%= link_to "Destroy", band_comment_path(receiver_band_id, comment.id), method: :delete , "data-confirm" => "このコメントを削除しますか？", class: "btn-sm btn-danger", remote: true %>
+                <% end %>
+              <% elsif band_signed_in? %>
+                <% if comment.band_id == current_band.id %>
+                  <%= link_to "Destroy", band_comment_path(receiver_band_id, comment.id), method: :delete , "data-confirm" => "このコメントを削除しますか？", class: "btn-sm btn-danger", remote: true %>
+                <% elsif receiver_band_id == current_band.id %>
+                  <%= link_to "Destroy", band_comment_path(receiver_band_id, comment.id), method: :delete , "data-confirm" => "このコメントを削除しますか？", class: "btn-sm btn-danger", remote: true %>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class="tab-pane" id="tab_c" role="tabpanel">
+      <table class="table table-striped">
+        <% band_comments.each do |comment| %>
+          <tr>
+            <th>コメント入力者</th>
+            <th>コメント内容</th>
+            <th>作成日</th>
+            <th></th>
+          </tr>
+          <tr>
+            <td>
+              <%= comment.band.name %>
+            </td>
+            <td>
+              <%= comment.body %>
+            </td>
+            <td>
+              <%= comment.created_at %>
+            </td>
+            <td>
+              <% if user_signed_in? %>
+                <% if comment.user_id == current_user.id %>
+                  <%= link_to "Destroy", band_comment_path(receiver_band_id, comment.id), method: :delete , "data-confirm" => "このコメントを削除しますか？", class: "btn-sm btn-danger", remote: true %>
+                <% end %>
+              <% elsif band_signed_in? %>
+                <% if comment.band_id == current_band.id %>
+                  <%= link_to "Destroy", band_comment_path(receiver_band_id, comment.id), method: :delete , "data-confirm" => "このコメントを削除しますか？", class: "btn-sm btn-danger", remote: true %>
+                <% elsif receiver_band_id == current_band.id %>
+                  <%= link_to "Destroy", band_comment_path(receiver_band_id, comment.id), method: :delete , "data-confirm" => "このコメントを削除しますか？", class: "btn-sm btn-danger", remote: true %>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

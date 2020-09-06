@@ -1,0 +1,2 @@
+$('#band-audios').children()[1].remove();
+$('#band-audios').html("<%= j(render 'bands/audios',{ audios: @audios, band_id: @band.id }) %>");
