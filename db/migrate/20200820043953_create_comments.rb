@@ -4,6 +4,7 @@ class CreateComments < ActiveRecord::Migration[5.2]
       t.text :body
       t.integer :band_id
       t.integer :user_id
+      t.integer :receiver_id
 
       t.timestamps
     end

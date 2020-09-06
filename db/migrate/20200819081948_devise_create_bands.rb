@@ -6,6 +6,8 @@ class DeviseCreateBands < ActiveRecord::Migration[5.2]
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
+      t.string :youtube_url
+      t.text :tips
 
       ## Recoverable
       t.string   :reset_password_token
@@ -35,8 +37,6 @@ class DeviseCreateBands < ActiveRecord::Migration[5.2]
       t.string "name_kana", null: false
       t.string "rep_name", null: false
       t.string "rep_name_kana", null: false
-      t.string "telephone_number"
-      t.string "zip_code"
       t.string "image_id"
       t.string "link"
       t.string "sns"
