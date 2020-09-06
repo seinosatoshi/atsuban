@@ -27,7 +27,7 @@
           <td>
             <div class="icon">
               <%= link_to @receiver_band.link do %>
-                <%= icon("fas", "home fa-3x") %>
+                <h4>公式HP</h4>
               <% end %>
             </div>
           </td>
@@ -76,7 +76,7 @@
         </tr>
   	    <tr>
           <th>
-            <%= attachment_image_tag @receiver_band, :image, :fill,350,250, format: "jpeg", class: "attachment user profile_image", fallback: "no_image.jpg" %>
+            <%= attachment_image_tag @receiver_band, :image, size: "350x250", format: "jpeg", class: "attachment user profile_image", fallback: "no_image.jpg" %>
           </th>
         </tr>
   	    <tr>
