@@ -69,6 +69,12 @@ gem 'pry-rails'
 gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.4.1'
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'carrierwave'
+gem 'carrierwave-audio'
+gem 'audiojs-rails'
+group :development, :test do
+  gem 'rspec-rails', '~> 3.6'
+end
 group :development do
   gem 'rubocop', require: false
 end
@@ -76,6 +82,3 @@ gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
-gem 'carrierwave'
-gem 'carrierwave-audio'
-gem 'audiojs-rails'
