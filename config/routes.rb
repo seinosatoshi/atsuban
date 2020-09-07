@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   passwords:     'users/passwords',
   registrations: 'users/registrations'
 }
-
+    put "/bands/:id/hide" => "bands#hide", as: 'bands_hide'
     resources :bands, only: [:index, :show, :edit, :new, :update] do
       resources :comments, only: [:create, :destroy]
       resources :subscribes, only: [:create, :destroy]

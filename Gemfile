@@ -72,6 +72,7 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 gem 'carrierwave'
 gem 'carrierwave-audio'
 gem 'audiojs-rails'
+gem 'paranoia'
 group :development, :test do
   gem 'rspec-rails', '~> 3.6'
 end

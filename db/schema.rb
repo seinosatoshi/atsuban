@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_20_044311) do
+ActiveRecord::Schema.define(version: 2020_09_07_111803) do
 
   create_table "audios", force: :cascade do |t|
     t.string "name"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2020_08_20_044311) do
     t.boolean "is_left", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
     t.index ["email"], name: "index_bands_on_email", unique: true
     t.index ["reset_password_token"], name: "index_bands_on_reset_password_token", unique: true
   end

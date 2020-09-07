@@ -22,7 +22,9 @@ class Band < ApplicationRecord
   # accepts_nested_attributes_for :posts, allow_destroy: true
 
   validates :name, presence: true
-  validates :name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
+  # validates :name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
+
+  acts_as_paranoid
 
   def favorited_by?(user)
     subscribes.where(user_id: user.id).exists?

@@ -43,6 +43,9 @@
           <%= f.text_area :tips, class: "form-control offset-1 col-5" %>
           <%= f.submit '更新', class: "edit-btn btn-lg btn-primary form-control offset-1 col-5" %>
         <% end %>
+        <% if band_signed_in? && @band.id == current_band.id %>
+          <%= link_to "退会", band_registration_path(current_band), method: :DELETE, "data-confirm" => "本当に退会しますか？", class: "btn btn-outline-danger" %>
+        <% end %>
       </div>
     </div>
   </div>
