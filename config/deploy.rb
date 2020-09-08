@@ -1,7 +1,7 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.14.1"
 
-set :application, "atsuban"
+set :application, "atsumare_indies_band"
 set :repo_url, "git@github.com:seinosatoshi/atsuban.git"
 set :deploy_to, "/home/ec2-user/atsumare_indies_band"
 set :rbenv_ruby, '2.5.7'
