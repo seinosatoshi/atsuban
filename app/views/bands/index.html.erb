@@ -32,7 +32,7 @@
         <table class="table table-striped">
           <thead>
             <tr>
-              <%= attachment_image_tag @band, :image, size: "265x200", format: "jpeg", class: "attachment user profile_image", fallback: "no_image.jpg" %>
+              <%= attachment_image_tag current_user, :image, size: "265x200", format: "jpeg", class: "attachment user profile_image", fallback: "no_image.jpg" %>
             </tr>
             <tr>
               <td>
