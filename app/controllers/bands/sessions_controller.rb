@@ -9,10 +9,10 @@ class Bands::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-    def create
-      flash[:alert] = "ようこそ！"
-      super
-    end
+  def create
+    flash[:alert] = 'ようこそ！'
+    super
+  end
 
   # DELETE /resource/sign_out
   # def destroy

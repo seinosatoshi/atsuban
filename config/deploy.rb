@@ -1,12 +1,12 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.14.1"
+lock '~> 3.14.1'
 
-set :application, "atsumare_indies_band"
-set :repo_url, "git@github.com:seinosatoshi/atsuban.git"
-set :deploy_to, "/home/ec2-user/atsumare_indies_band"
+set :application, 'atsumare_indies_band'
+set :repo_url, 'git@github.com:seinosatoshi/atsuban.git'
+set :deploy_to, '/home/ec2-user/atsumare_indies_band'
 set :rbenv_ruby, '2.5.7'
-set :linked_files, %w{config/master.key .env}
-append :linked_dirs, "log", "public", "tmp"
+set :linked_files, %w[config/master.key .env]
+append :linked_dirs, 'log', 'public', 'tmp'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp

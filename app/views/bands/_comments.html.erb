@@ -33,13 +33,13 @@
             <td>
               <% if user_signed_in? %>
                 <% if comment.user_id == current_user.id %>
-                  <%= link_to "Destroy", band_comment_path(receiver_band_id, comment.id), method: :delete , "data-confirm" => "このコメントを削除しますか？", class: "btn-sm btn-danger", remote: true %>
+                  <%= link_to "削除", band_comment_path(receiver_band_id, comment.id), method: :delete , "data-confirm" => "このコメントを削除しますか？", class: "btn-sm btn-danger", remote: true %>
                 <% end %>
               <% elsif band_signed_in? %>
                 <% if comment.band_id == current_band.id %>
-                  <%= link_to "Destroy", band_comment_path(receiver_band_id, comment.id), method: :delete , "data-confirm" => "このコメントを削除しますか？", class: "btn-sm btn-danger", remote: true %>
+                  <%= link_to "削除", band_comment_path(receiver_band_id, comment.id), method: :delete , "data-confirm" => "このコメントを削除しますか？", class: "btn-sm btn-danger", remote: true %>
                 <% elsif receiver_band_id == current_band.id %>
-                  <%= link_to "Destroy", band_comment_path(receiver_band_id, comment.id), method: :delete , "data-confirm" => "このコメントを削除しますか？", class: "btn-sm btn-danger", remote: true %>
+                  <%= link_to "削除", band_comment_path(receiver_band_id, comment.id), method: :delete , "data-confirm" => "このコメントを削除しますか？", class: "btn-sm btn-danger", remote: true %>
                 <% end %>
               <% end %>
             </td>
@@ -69,13 +69,13 @@
             <td>
               <% if user_signed_in? %>
                 <% if comment.user_id == current_user.id %>
-                  <%= link_to "Destroy", band_comment_path(receiver_band_id, comment.id), method: :delete , "data-confirm" => "このコメントを削除しますか？", class: "btn-sm btn-danger", remote: true %>
+                  <%= link_to "削除", band_comment_path(receiver_band_id, comment.id), method: :delete , "data-confirm" => "このコメントを削除しますか？", class: "btn-sm btn-danger", remote: true %>
                 <% end %>
               <% elsif band_signed_in? %>
                 <% if comment.band_id == current_band.id %>
-                  <%= link_to "Destroy", band_comment_path(receiver_band_id, comment.id), method: :delete , "data-confirm" => "このコメントを削除しますか？", class: "btn-sm btn-danger", remote: true %>
+                  <%= link_to "削除", band_comment_path(receiver_band_id, comment.id), method: :delete , "data-confirm" => "このコメントを削除しますか？", class: "btn-sm btn-danger", remote: true %>
                 <% elsif receiver_band_id == current_band.id %>
-                  <%= link_to "Destroy", band_comment_path(receiver_band_id, comment.id), method: :delete , "data-confirm" => "このコメントを削除しますか？", class: "btn-sm btn-danger", remote: true %>
+                  <%= link_to "削除", band_comment_path(receiver_band_id, comment.id), method: :delete , "data-confirm" => "このコメントを削除しますか？", class: "btn-sm btn-danger", remote: true %>
                 <% end %>
               <% end %>
             </td>
@@ -105,13 +105,13 @@
             <td>
               <% if user_signed_in? %>
                 <% if comment.user_id == current_user.id %>
-                  <%= link_to "Destroy", band_comment_path(receiver_band_id, comment.id), method: :delete , "data-confirm" => "このコメントを削除しますか？", class: "btn-sm btn-danger", remote: true %>
+                  <%= link_to "削除", band_comment_path(receiver_band_id, comment.id), method: :delete , "data-confirm" => "このコメントを削除しますか？", class: "btn-sm btn-danger", remote: true %>
                 <% end %>
               <% elsif band_signed_in? %>
                 <% if comment.band_id == current_band.id %>
-                  <%= link_to "Destroy", band_comment_path(receiver_band_id, comment.id), method: :delete , "data-confirm" => "このコメントを削除しますか？", class: "btn-sm btn-danger", remote: true %>
+                  <%= link_to "削除", band_comment_path(receiver_band_id, comment.id), method: :delete , "data-confirm" => "このコメントを削除しますか？", class: "btn-sm btn-danger", remote: true %>
                 <% elsif receiver_band_id == current_band.id %>
-                  <%= link_to "Destroy", band_comment_path(receiver_band_id, comment.id), method: :delete , "data-confirm" => "このコメントを削除しますか？", class: "btn-sm btn-danger", remote: true %>
+                  <%= link_to "削除", band_comment_path(receiver_band_id, comment.id), method: :delete , "data-confirm" => "このコメントを削除しますか？", class: "btn-sm btn-danger", remote: true %>
                 <% end %>
               <% end %>
             </td>

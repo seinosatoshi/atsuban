@@ -1,11 +1,27 @@
-<div class="main-container">
+<div class="container">
   <div class="row">
   	<main>
   		<%= image_tag 'atsuban1.jpg', :width => '1100', :height => '500' %>
   	</main>
   	<body>
-   	  <div class="col-xs-3">
-   	    <h1>ああああ</h1>
+   	  <div class="col-md-10 col-md-offset-1">
+   	    <h1 class="main-content"><strong>あつまれ！インディーズバンド</strong>　とは</h1>
+   	    <h4 class="txt">ライブハウスでの活動が制限されているバンドマン、地下アイドル、シンガーソングライター達が集う場所。<br>こんな世の中だからこそ全国にいるライブバンドがオンラインで表現できる場所を作りました。自身のバンド情報を登録し、音源・動画をアップロードしてユーザーからのエールをGETしよう！</h4>
+   	  </div>
+   	  <div class="top-band col-xs-5">
+   	  	<h4 class="content">バンドの方はこちら</h4>
+   	  	<h4 class="band-content">
+	   	  <%= link_to "新規登録", band_registration_path, method: :post, data: {"turbolinks" => false} %>
+	   	  <%= link_to "ログイン", new_band_session_path, data: {"turbolinks" => false} %>
+	   	</h4>
+   	  </div>
+   	  <div class="top-band col-xs-5">
+   	  	<h4 class="content">ユーザーの方はこちら</h4>
+   	  	<h4 class="band-content">
+	   	  <%= link_to "新規登録", user_registration_path, method: :post, data: {"turbolinks" => false} %>
+	   	  <%= link_to "ログイン", new_user_session_path, data: {"turbolinks" => false} %>
+	   	</h4>
+   	  </div>
    	  </div>
   	</body>
   </div>

@@ -15,14 +15,11 @@ class User < ApplicationRecord
   validates :name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
 
   def already_yelled_within_a_day?(band)
-  	result = yells.where(band_id: band.id)
-  	if result.size == 0
-  	  return false
-  	elsif yells.where(band_id: band.id).last.created_at.to_time > 1.day.ago
-  	  return true
-  	else
-  	  return false
+    result = yells.where(band_id: band.id)
+    if result.size == 0
+      false
+    else
+      yells.where(band_id: band.id).last.created_at.to_time > 1.day.ago
     end
   end
 end
-
