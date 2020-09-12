@@ -27,4 +27,14 @@ class Band < ApplicationRecord
   def yelled_at_by?(user)
     s.where(user_id: user.id).exists?
   end
+
+  def self.all_ranks
+    Band.find(Yell.group(:band_id).order('count(band_id) desc').limit(3).pluck(:band_id))
+  end
+  # ==
+  # class << self
+  #   def all_ranks
+  #     Band.find(Yell.group(:band_id).order('count(band_id) desc').limit(3).pluck(:band_id))
+  #   end
+  # end
 end

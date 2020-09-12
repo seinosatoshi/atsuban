@@ -24,7 +24,10 @@ ul{
 
 main{
 	text-align: center;
-	/*background-color: #FFDBC9;*/
+}
+
+.margin-right{
+	margin-right: 40px;
 }
 
 .main-content{
@@ -48,6 +51,16 @@ main{
 .band-content{
 	text-align: center;
 	margin-top: 20px;
+}
+
+.sub-content{
+	text-align: center;
+	margin-top: 50px;
+	margin-right: 60px;
+}
+
+.for-user{
+	margin-left: 100px;
 }
 
 .form{

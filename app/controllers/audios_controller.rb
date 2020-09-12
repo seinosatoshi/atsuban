@@ -1,5 +1,4 @@
 class AudiosController < ApplicationController
-  def new; end
 
   def create
     @band = Band.find(params[:band_id])

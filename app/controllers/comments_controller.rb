@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+
   def create
     @comment = Comment.new(comment_params)
     @comment.receiver_id = params[:band_id]

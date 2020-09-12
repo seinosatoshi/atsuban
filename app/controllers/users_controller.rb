@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+
   def show
     @user = current_user
     # @receiver_band = Band.find(params[:band_id])

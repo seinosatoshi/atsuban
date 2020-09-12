@@ -4,24 +4,16 @@
   	<div class="col-xs-2">
       <table class="show-left">
         <tr><br><br><br><br>
-          <td>
-            <h4>代表者：<%= @receiver_band.rep_name %></h4>
-          </td>
+          <td><h4>代表者：<%= @receiver_band.rep_name %></h4></td>
         </tr>
         <tr>
-      		<td>
-            <h4>活動地：<%= @receiver_band.area %></h4>
-          </td>
+      		<td><h4>活動地：<%= @receiver_band.area %></h4></td>
         </tr>
         <tr>
-          <td>
-            <h4>ジャンル：<%= @receiver_band.genre %></h4>
-          </td>
+          <td><h4>ジャンル：<%= @receiver_band.genre %></h4></td>
         </tr>
         <tr>
-          <td>
-            <h4>お知らせ：<%= @receiver_band.tips %></h4>
-          </td>
+          <td><h4>お知らせ：<%= @receiver_band.tips %></h4></td>
         </tr>
         <tr>
           <td>
@@ -61,7 +53,9 @@
               <% end %>
             </h2>
             <div class="band-headline">
-              <h5>エール数：<%= @yells.count %></h5>
+              <% if user_signed_in? || band_signed_in? %>
+                <h5>エール数：<%= @yells.count %></h5>
+              <% end %>
               <% if user_signed_in? %>
                 <% if current_user.already_yelled_within_a_day?(@receiver_band) %>
                   <h5>エール済み(1日1回まで。24時間後にお試しください)</h5>
@@ -139,9 +133,11 @@
         <%= render 'bands/comments', comments: @comments, user_comments: @user_comments, band_comments: @band_comments, receiver_band_id: @receiver_band.id %>
       </div>
     <div class="comment col-md-5 col-md-offset-3">
-      <%= form_for(@comment,url:band_comments_path(@receiver_band.id), data: {remote: true, "turbolinks" => false}) do |f| %>
-        <%= f.text_area :body, class: "form-control offset-1 col-5" %>
-        <%= f.submit '投稿', class: "form-control offset-1 col-5" %>
+      <% if user_signed_in? || band_signed_in? %>
+        <%= form_for(@comment,url:band_comments_path(@receiver_band.id), data: {remote: true, "turbolinks" => false}) do |f| %>
+          <%= f.text_area :body, class: "form-control offset-1 col-5" %>
+          <%= f.submit '投稿', class: "form-control offset-1 col-5" %>
+        <% end %>
       <% end %>
     </div>
   </div>
