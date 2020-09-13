@@ -10,11 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_13_060507) do
+ActiveRecord::Schema.define(version: 2020_09_13_063615) do
 
   create_table "audios", force: :cascade do |t|
     t.string "name"
-    t.integer "post_id"
     t.string "file"
     t.integer "band_id"
     t.datetime "created_at", null: false
@@ -77,7 +76,6 @@ ActiveRecord::Schema.define(version: 2020_09_13_060507) do
   create_table "yells", force: :cascade do |t|
     t.integer "band_id"
     t.integer "user_id"
-    t.datetime "yelled_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -29,7 +29,7 @@ class Band < ApplicationRecord
   def self.all_ranks
     Band.find(Yell.group(:band_id).order('count(band_id) desc').limit(5).pluck(:band_id))
   end
-  # ==
+  # selfが多い場合は以下の記述の方が効率的
   # class << self
   #   def all_ranks
   #     Band.find(Yell.group(:band_id).order('count(band_id) desc').limit(3).pluck(:band_id))
