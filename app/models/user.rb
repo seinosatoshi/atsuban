@@ -12,7 +12,6 @@ class User < ApplicationRecord
   attachment :image
 
   validates :name, presence: true
-  validates :name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
 
   def already_yelled_within_a_day?(band)
     result = yells.where(band_id: band.id)

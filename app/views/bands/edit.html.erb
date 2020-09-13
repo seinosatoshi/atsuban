@@ -17,12 +17,8 @@
         <%= form_for(@band) do |f| %>
           <% if @band.errors.any? %>
           <% end %>
-          <h4 class="edit-space">バンド名(フリガナ)</h4>
-          <%= f.text_field :name_kana, class: "form-control offset-1 col-5" %>
           <h4 class="edit-space">バンド名</h4>
           <%= f.text_field :name, class: "form-control offset-1 col-5" %>
-          <h4 class="edit-space">代表者(フリガナ)</h4>
-          <%= f.text_field :rep_name_kana, class: "form-control offset-1 col-5" %>
           <h4 class="edit-space">代表者</h4>
           <%= f.text_field :rep_name, class: "form-control offset-1 col-5" %>
           <h4 class="edit-space">アーティスト写真</h4>

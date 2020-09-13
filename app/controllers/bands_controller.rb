@@ -51,6 +51,6 @@ class BandsController < ApplicationController
 
   private
   def band_params
-    params.require(:band).permit( :name, :name_kana, :rep_name, :rep_name_kana, :image, :introduction, :link, :sns, :area, :genre, :youtube_url, :tips)
+    params.require(:band).permit( :name, :rep_name, :image, :introduction, :link, :sns, :area, :genre, :youtube_url, :tips)
   end
 end

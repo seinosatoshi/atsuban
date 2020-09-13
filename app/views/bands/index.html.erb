@@ -5,49 +5,51 @@
         <p><%= flash[:alert] %><%= current_band.name %>さん</p>
       <% end %>
     <% end %>
-    <div class="index-left col-xs-3">
-      <% if @band != nil %>
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <%= attachment_image_tag @band, :image, size: "265x200", format: "jpeg", class: "attachment user profile_image", fallback: "no_image.jpg" %>
-            </tr>
-            <tr>
-              <td>
-                <h3><%= current_band.name %></h3>
-              </td>
-            </tr>
-            <tr>
-              <td><%= current_band.area %></td>
-            </tr>
-            <tr>
-              <td><%= current_band.introduction %></td>
-            </tr>
-          </thead>
-        </table>
-        <%= link_to band_path(current_band.id) do %>
-          <span class="fa fa-search glyphicon glyphicon-wrench btn btn-default col-xs-12"></span>
-        <% end %>
-      <% else %>
-        <% if user_signed_in? %>
+    <% if user_signed_in? || band_signed_in? %>
+      <div class="index-left col-xs-3">
+        <% if @band != nil %>
           <table class="table table-striped">
             <thead>
               <tr>
-                <%= attachment_image_tag current_user, :image, size: "265x200", format: "jpeg", class: "attachment user profile_image", fallback: "no_image.jpg" %>
+                <%= attachment_image_tag @band, :image, size: "265x200", format: "jpeg", class: "attachment user profile_image", fallback: "no_image.jpg" %>
               </tr>
               <tr>
                 <td>
-                  <h3><%= current_user.name %></h3>
+                  <h3><%= current_band.name %></h3>
                 </td>
+              </tr>
+              <tr>
+                <td><%= current_band.area %></td>
+              </tr>
+              <tr>
+                <td><%= current_band.introduction %></td>
               </tr>
             </thead>
           </table>
-          <%= link_to user_path(current_user.id) do %>
+          <%= link_to band_path(current_band.id) do %>
             <span class="fa fa-search glyphicon glyphicon-wrench btn btn-default col-xs-12"></span>
           <% end %>
+        <% else %>
+          <% if user_signed_in? %>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <%= attachment_image_tag current_user, :image, size: "265x200", format: "jpeg", class: "attachment user profile_image", fallback: "no_image.jpg" %>
+                </tr>
+                <tr>
+                  <td>
+                    <h3><%= current_user.name %></h3>
+                  </td>
+                </tr>
+              </thead>
+            </table>
+            <%= link_to user_path(current_user.id) do %>
+              <span class="fa fa-search glyphicon glyphicon-wrench btn btn-default col-xs-12"></span>
+            <% end %>
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   	<div class="col-xs-9">
       <ul class="nav nav-tabs" role="tablist">
         <li class="active" role="presentation">
