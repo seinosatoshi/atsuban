@@ -74,6 +74,7 @@ gem 'refile', require: 'refile/rails', github: 'manfe/refile'
 gem 'refile-mini_magick'
 gem 'twitter-bootstrap-rails', git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem 'fog-aws'
+gem 'kaminari','~> 1.2.1'
 group :development, :test do
   gem 'rspec-rails', '~> 3.6'
 end
