@@ -61,65 +61,65 @@
         <div class="tab-pane active" id="tab_a" role="tabpanel">
           <table class="table table-striped">
             <% @all_ranks.each do |band| %>
-                <tr class="band_<%= band.id %>">
-                  <td>
-                    <div class="img">
-                      <%= attachment_image_tag band, :image, size: "60x60", format: "jpeg", class: "attachment user profile_image", fallback: "no_image.jpg" %>
-                    </div>
-                  </td>
-                  <td>
-                    <h4><%= link_to band.name, band_path(band.id), class: "band_#{band.id}" %></h4>
-                  </td>
-                  <td>
-                    <h5><%= band.area %></h5>
-                  </td>
-                  <td>
-                    <%= link_to band.link do %>
-                      <%= icon("fas", "home fa-3x") %>
-                    <% end %>
-                  </td>
-                  <td>
-                    <%= link_to band.sns do %>
-                      <%= icon("fab", "twitter fa-3x") %>
-                    <% end %>
-                  </td>
-                  <td>
-                    <h5><%= band.tips %></h5>
-                  </td>
-                </tr>
-              <% end %>
+              <tr class="band_<%= band.id %>">
+                <td>
+                  <div class="img">
+                    <%= attachment_image_tag band, :image, size: "60x60", format: "jpeg", class: "attachment user profile_image", fallback: "no_image.jpg" %>
+                  </div>
+                </td>
+                <td>
+                  <h4><%= link_to band.name, band_path(band.id), class: "band_#{band.id}" %></h4>
+                </td>
+                <td>
+                  <h5><%= band.area %></h5>
+                </td>
+                <td>
+                  <%= link_to band.link do %>
+                    <%= icon("fas", "home fa-3x") %>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to band.sns do %>
+                    <%= icon("fab", "twitter fa-3x") %>
+                  <% end %>
+                </td>
+                <td>
+                  <h5><%= band.tips %></h5>
+                </td>
+              </tr>
+            <% end %>
           </table>
         </div>
         <div class="tab-pane" id="tab_b" role="tabpanel">
           <table class="table table-striped">
             <% @bands.each do |band| %>
-                <tr class="band_<%= band.id %>">
-                  <td>
-                    <div class="img">
-                      <%= attachment_image_tag band, :image, size: "60x60", format: "jpeg", class: "attachment user profile_image", fallback: "no_image.jpg" %>
-                    </div>
-                  </td>
-                  <td>
-                    <h4><%= link_to band.name, band_path(band.id), class: "band_#{band.id}" %></h4>
-                  </td>
-                  <td>
-                    <h5><%= band.area %></h5>
-                  </td>
-                  <td>
-                    <%= link_to band.link do %>
-                      <%= icon("fas", "home fa-3x") %>
-                    <% end %>
-                  </td>
-                  <td>
-                    <%= link_to band.sns do %>
-                      <%= icon("fab", "twitter fa-3x") %>
-                    <% end %>
-                  </td>
-                  <td>
-                    <h5><%= band.tips %></h5>
-                  </td>
-                </tr>
-              <% end %>
+              <tr class="band_<%= band.id %>">
+                <td>
+                  <div class="img">
+                    <%= attachment_image_tag band, :image, size: "60x60", format: "jpeg", class: "attachment user profile_image", fallback: "no_image.jpg" %>
+                  </div>
+                </td>
+                <td>
+                  <h4><%= link_to band.name, band_path(band.id), class: "band_#{band.id}" %></h4>
+                </td>
+                <td>
+                  <h5><%= band.area %></h5>
+                </td>
+                <td>
+                  <%= link_to band.link do %>
+                    <%= icon("fas", "home fa-3x") %>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to band.sns do %>
+                    <%= icon("fab", "twitter fa-3x") %>
+                  <% end %>
+                </td>
+                <td>
+                  <h5><%= band.tips %></h5>
+                </td>
+              </tr>
+            <% end %>
           </table>
         </div>
       </div>

@@ -1,5 +1,5 @@
 class BandsController < ApplicationController
-  before_action :authenticate_user!, only: [:edit, :update]
+  before_action :authenticate_band!, only: [:edit, :update]
 
   def index
     @bands = Band.all
