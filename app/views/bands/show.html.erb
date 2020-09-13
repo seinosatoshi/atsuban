@@ -129,9 +129,9 @@
   </div>
   <div class="row">
     <h3>コメント</h3>
-      <div id="band-comments">
-        <%= render 'bands/comments', comments: @comments, user_comments: @user_comments, band_comments: @band_comments, receiver_band_id: @receiver_band.id %>
-      </div>
+    <div id="band-comments">
+      <%= render 'bands/comments', comments: @comments, user_comments: @user_comments, band_comments: @band_comments, receiver_band_id: @receiver_band.id %>
+    </div>
     <div class="comment col-md-5 col-md-offset-3">
       <% if user_signed_in? || band_signed_in? %>
         <%= form_for(@comment,url:band_comments_path(@receiver_band.id), data: {remote: true, "turbolinks" => false}) do |f| %>
