@@ -50,7 +50,11 @@
         <% end %>
       </div>
     <% end %>
-  	<div class="col-xs-9">
+    <% unless band_signed_in? || user_signed_in? %>
+  	  <div class="col-xs-8 col-xs-offset-2">
+    <% else %>
+      <div class="col-xs-9">
+    <% end %>
       <ul class="nav nav-tabs" role="tablist">
         <li class="active" role="presentation">
           <a aria-controls="tab_a" data-toggle="tab" href="#tab_a" role="tab">エールランキング</a>

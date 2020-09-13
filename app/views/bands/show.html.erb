@@ -2,38 +2,40 @@
 <div class="container">
   <div class="row">
   	<div class="col-xs-2">
-      <table class="show-left">
-        <tr><br><br><br><br>
-          <td><h4>代表者：<%= @receiver_band.rep_name %></h4></td>
-        </tr>
-        <tr>
-      		<td><h4>活動地：<%= @receiver_band.area %></h4></td>
-        </tr>
-        <tr>
-          <td><h4>ジャンル：<%= @receiver_band.genre %></h4></td>
-        </tr>
-        <tr>
-          <td><h4>お知らせ：<%= @receiver_band.tips %></h4></td>
-        </tr>
-        <tr>
-          <td>
-            <div class="icon">
-              <%= link_to @receiver_band.link do %>
-                <%= icon("fas", "home fa-3x") %>
-              <% end %>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="icon">
-              <%= link_to @receiver_band.sns do %>
-                <%= icon("fab", "twitter fa-3x") %>
-              <% end %>
-            </div>
-          </td>
-        </tr>
-      </table>
+      <div class="show-left">
+        <table>
+          <tr>
+            <td><h4>代表者：<%= @receiver_band.rep_name %></h4></td>
+          </tr>
+          <tr>
+        		<td><h4>活動地：<%= @receiver_band.area %></h4></td>
+          </tr>
+          <tr>
+            <td><h4>ジャンル：<%= @receiver_band.genre %></h4></td>
+          </tr>
+          <tr>
+            <td><h4>お知らせ：<%= @receiver_band.tips %></h4></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="icon">
+                <%= link_to @receiver_band.link do %>
+                  <%= icon("fas", "home fa-3x") %>
+                <% end %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="icon">
+                <%= link_to @receiver_band.sns do %>
+                  <%= icon("fab", "twitter fa-3x") %>
+                <% end %>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
   	</div>
   	<div class="col-xs-4">
       <table>

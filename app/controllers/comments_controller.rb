@@ -3,11 +3,11 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.receiver_id = params[:band_id]
-    if current_band
-      @comment.band_id = current_band.id
-    elsif current_user
-      @comment.user_id = current_user.id
-    end
+      if current_band
+        @comment.band_id = current_band.id
+      elsif current_user
+        @comment.user_id = current_user.id
+      end
     @comment.save
     @comments = Comment.where(receiver_id: @comment.receiver_id)
     @band_comments = Comment.where(receiver_id: @comment.receiver_id).where(user_id: nil)

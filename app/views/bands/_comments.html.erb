@@ -1,4 +1,4 @@
-<div>
+<div id="pagenate">
   <ul class="nav nav-tabs" role="tablist">
     <li class="active" role="presentation">
       <a aria-controls="tab_a" data-toggle="tab" href="#tab_a" role="tab">全体コメント</a>
@@ -13,13 +13,13 @@
   <div class="tab-content">
     <div class="tab-pane active" id="tab_a" role="tabpanel">
       <table class="table table-striped">
+        <tr>
+          <th>コメント入力者</th>
+          <th>コメント内容</th>
+          <th>作成日</th>
+          <th></th>
+        </tr>
         <% comments.each do |comment| %>
-          <tr>
-            <th>コメント入力者</th>
-            <th>コメント内容</th>
-            <th>作成日</th>
-            <th></th>
-          </tr>
           <tr>
             <td>
               <%= comment.band ? comment.band.name : comment.user.name %>
@@ -46,17 +46,16 @@
           </tr>
         <% end %>
       </table>
-      <%= paginate comments %>
     </div>
     <div class="tab-pane" id="tab_b" role="tabpanel">
       <table class="table table-striped">
+        <tr>
+          <th>コメント入力者</th>
+          <th>コメント内容</th>
+          <th>作成日</th>
+          <th></th>
+        </tr>
         <% user_comments.each do |comment| %>
-          <tr>
-            <th>コメント入力者</th>
-            <th>コメント内容</th>
-            <th>作成日</th>
-            <th></th>
-          </tr>
           <tr>
             <td>
               <%= comment.user.name %>
@@ -83,17 +82,16 @@
           </tr>
         <% end %>
       </table>
-      <%= paginate user_comments %>
     </div>
     <div class="tab-pane" id="tab_c" role="tabpanel">
       <table class="table table-striped">
+        <tr>
+          <th>コメント入力者</th>
+          <th>コメント内容</th>
+          <th>作成日</th>
+          <th></th>
+        </tr>
         <% band_comments.each do |comment| %>
-          <tr>
-            <th>コメント入力者</th>
-            <th>コメント内容</th>
-            <th>作成日</th>
-            <th></th>
-          </tr>
           <tr>
             <td>
               <%= comment.band.name %>
@@ -120,7 +118,6 @@
           </tr>
         <% end %>
       </table>
-      <%= paginate band_comments %>
     </div>
   </div>
 </div>

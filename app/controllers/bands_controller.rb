@@ -1,6 +1,5 @@
 class BandsController < ApplicationController
   before_action :authenticate_band!, only: [:edit, :update]
-  PER = 4
 
   def index
     @bands = Band.all
@@ -14,14 +13,12 @@ class BandsController < ApplicationController
     @audios = @receiver_band.audios
     @comment = Comment.new
     #コメントをされたバンドの情報を拾い上げる
-    @comments = Comment.where(receiver_id:@receiver_band.id).page(params[:page]).per(PER)
+    @comments = Comment.where(receiver_id:@receiver_band.id)
     #user_idがnilということは、bandが入力したコメントを取得できる
-    @band_comments = Comment.where(receiver_id:@receiver_band.id).where(user_id:nil).page(params[:page]).per(PER)
-    @user_comments = Comment.where(receiver_id:@receiver_band.id).where(band_id:nil).page(params[:page]).per(PER)
-    unless band_signed_in?
-      if user_signed_in?
-        @yells = Yell.where(user_id: current_user.id).where(band_id: @receiver_band.id)
-      end
+    @band_comments = Comment.where(receiver_id:@receiver_band.id).where(user_id:nil)
+    @user_comments = Comment.where(receiver_id:@receiver_band.id).where(band_id:nil)
+    if user_signed_in?
+       @yells = Yell.where(user_id: current_user.id).where(band_id: @receiver_band.id)
     else
       @yells = Yell.where(band_id: @receiver_band.id)
     end
