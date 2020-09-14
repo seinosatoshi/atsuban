@@ -1,5 +1,4 @@
 class YellsController < ApplicationController
-  before_action :authenticate_band!
   before_action :authenticate_user!
 
   def create
