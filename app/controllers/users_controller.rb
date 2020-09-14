@@ -3,7 +3,6 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    # @receiver_band = Band.find(params[:band_id])
     @subscribes = Subscribe.where(user_id: @user.id)
   end
 
@@ -26,7 +25,7 @@ class UsersController < ApplicationController
 
   private
 
-  def user_params
-    params.require(:user).permit(:name, :image)
-  end
+    def user_params
+      params.require(:user).permit(:name, :image)
+    end
 end

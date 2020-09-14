@@ -1,4 +1,5 @@
 class AudiosController < ApplicationController
+  before_action :authenticate_band!
 
   def create
     @band = Band.find(params[:band_id])
@@ -20,7 +21,7 @@ class AudiosController < ApplicationController
 
   private
 
-  def audio_params
-    params.require(:audio).permit(:file, :name)
-  end
+    def audio_params
+      params.require(:audio).permit(:file, :name)
+    end
 end

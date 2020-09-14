@@ -1,6 +1,7 @@
 class SubscribesController < ApplicationController
+  before_action :authenticate_user!
 
-  # def index; end
+  def index; end
 
   def create
     @receiver_band = Band.find(params[:band_id])

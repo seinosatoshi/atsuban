@@ -66,20 +66,23 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'carrierwave'
 gem 'carrierwave-audio'
 gem 'devise'
+gem 'fog-aws'
 gem 'font-awesome-sass', '~> 5.4.1'
 gem 'jquery-rails'
+gem 'kaminari', '~> 1.2.1'
 gem 'paranoia'
 gem 'pry-rails'
 gem 'refile', require: 'refile/rails', github: 'manfe/refile'
 gem 'refile-mini_magick'
 gem 'twitter-bootstrap-rails', git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
-gem 'fog-aws'
-gem 'kaminari','~> 1.2.1'
 group :development, :test do
   gem 'rspec-rails', '~> 3.6'
 end
 group :development do
   gem 'rubocop', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec'
 end
 gem 'dotenv-rails'
 group :production do
