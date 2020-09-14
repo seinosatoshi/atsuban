@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   }
   resources :bands, only: %i[index show edit new update] do
     resources :comments, only: %i[create destroy]
-    resources :subscribes, only: %i[create destroy]
+    resource :subscribes, only: %i[create destroy]
     resources :yells, only: %i[create destroy]
     resources :audios, only: %i[create destroy]
     resources :posts, only: %i[show create destroy]

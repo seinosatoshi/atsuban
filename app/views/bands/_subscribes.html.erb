@@ -1,0 +1,10 @@
+<%= receiver_band.name %>
+<% if receiver_band.favorited_by?(current_user) %>
+  <%= link_to band_subscribes_path(receiver_band), method: :delete, remote: true do %>
+    <%= icon("fas", "star") %>
+  <% end %>
+<% else %>
+  <%= link_to band_subscribes_path(receiver_band), method: :post, remote: true do %>
+    <%= icon("far", "star") %>
+  <% end %>
+<% end %>

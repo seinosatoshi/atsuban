@@ -5,16 +5,24 @@
       <div class="show-left">
         <table>
           <tr>
-            <td><h4>代表者：<%= @receiver_band.rep_name %></h4></td>
+            <td>
+              <h4>代表者：<%= @receiver_band.rep_name %></h4>
+            </td>
           </tr>
           <tr>
-        		<td><h4>活動地：<%= @receiver_band.area %></h4></td>
+        		<td>
+              <h4>活動地：<%= @receiver_band.area %></h4>
+            </td>
           </tr>
           <tr>
-            <td><h4>ジャンル：<%= @receiver_band.genre %></h4></td>
+            <td>
+              <h4>ジャンル：<%= @receiver_band.genre %></h4>
+            </td>
           </tr>
           <tr>
-            <td><h4>お知らせ：<%= @receiver_band.tips %></h4></td>
+            <td>
+              <h4>お知らせ：<%= @receiver_band.tips %></h4>
+            </td>
           </tr>
           <tr>
             <td>
@@ -41,17 +49,11 @@
       <table>
         <tr>
           <th>
-            <h2 class="band-headline"><%= @receiver_band.name %>
+            <h2 id="band-headline-<%= @receiver_band.id %>">
               <% if user_signed_in? %>
-                <% if @receiver_band.favorited_by?(current_user) %>
-                  <%= link_to band_subscribe_path(@receiver_band), method: :delete do %>
-                    <%= icon("fas", "star") %>
-                  <% end %>
-                <% else %>
-                  <%= link_to band_subscribes_path(@receiver_band), method: :post do %>
-                    <%= icon("far", "star") %>
-                  <% end %>
-                <% end %>
+                <%= render 'bands/subscribes', receiver_band: @receiver_band %>
+              <% else %>
+                <%= @receiver_band.name %>
               <% end %>
             </h2>
             <div class="band-headline">
