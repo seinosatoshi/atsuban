@@ -62,7 +62,7 @@
               <% end %>
               <% if user_signed_in? %>
                 <% if current_user.already_yelled_within_a_day?(@receiver_band) %>
-                  <h5>エール済み(1日1回まで。24時間後にお試しください)</h5>
+                  <h5>エール済み(24時間後にお試しください)</h5>
                 <% elsif %>
                   <%= link_to band_yells_path(@receiver_band), method: :post do %>
                     <h5>エールを送る<%= icon("far", "heart") %></h5>

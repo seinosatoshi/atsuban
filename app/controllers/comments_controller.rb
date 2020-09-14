@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action if: proc {user_signed_in? || band_signed_in?}
+  before_action if: proc { user_signed_in? || band_signed_in? }
 
   def create
     @comment = Comment.new(comment_params)
@@ -31,5 +31,5 @@ class CommentsController < ApplicationController
 
     def comment_params
       params.require(:comment).permit(:body)
-     end
+    end
 end

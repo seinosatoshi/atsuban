@@ -18,7 +18,7 @@ class User < ApplicationRecord
     if result.size == 0
       false
     else
-      yells.where(band_id: band.id).last.created_at.to_time > 1.day.ago
+      yells.where(band_id: band.id).last.created_at.in_time_zone > 1.day.ago
     end
   end
 end
