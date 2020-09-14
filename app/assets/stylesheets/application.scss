@@ -30,15 +30,21 @@ main{
 	margin-right: 40px;
 }
 
+.main-txt{
+   margin-left: 50px;
+   text-align: center;
+}
+
 .main-content{
-	text-align: center;
 	margin-top: 50px;
 	margin-bottom: 30px;
 }
 
 .txt{
-	letter-spacing: 1px;
+	letter-spacing: 0.5px;
+	line-height: 25px;
 }
+
 .top-band{
 	margin-top: 50px;
 	margin-left: 50px;
@@ -67,7 +73,8 @@ main{
 }
 
 .for-user{
-	margin-left: 100px;
+	margin-left: 130px;
+	margin-bottom: 30px;
 }
 
 .form{
