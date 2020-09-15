@@ -72,10 +72,14 @@ Lint/StructNewOverride:
 
 Layout/LineLength:
   Max: 150
+  Exclude:
+    - 'config/initializers/devise.rb'
 
 Metrics/AbcSize:
   Exclude:
     - 'lib/tasks/dev.rake'
+    - 'app/controllers/bands_controller.rb'
+    - 'app/controllers/comments_controller.rb'
 
 Metrics/BlockLength:
   CountComments: false
@@ -177,4 +181,7 @@ Style/SlicingWithRange:
   Enabled: true
 
 Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Rails/InverseOf:
   Enabled: false
