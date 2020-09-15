@@ -1,2 +1,3 @@
 $('textarea').val("");
 $('#band-comments').html("<%= j(render 'bands/comments',{ comments: @comments, user_comments: @user_comments, band_comments: @band_comments, receiver_band_id: @comment.receiver_id }) %>");
+

@@ -18,8 +18,14 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
-    if (current_user && @comment.user_id == current_user.id) || (current_band && @comment.receiver_id == current_band.id)
-      @comment.destroy
+    if user_signed_in?
+      if @comment.user_id == current_user.id
+        @comment.destroy
+      end
+    elsif band_signed_in?
+      if @comment.band_id == current_band.id
+        @comment.destroy
+      end
     end
     @comments = Comment.where(receiver_id: @comment.receiver_id)
     @band_comments = Comment.where(receiver_id: @comment.receiver_id).where(user_id: nil)

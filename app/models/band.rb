@@ -9,7 +9,7 @@ class Band < ApplicationRecord
   has_many :subscribes, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :users, through: :comments
-  has_many :receive_bands, through: :comments, class_name: 'Band', foreign_key: 'receiver_id'
+  has_many :receive_bands, through: :comments, class_name: 'Band', foreign_key: 'receiver_id', inverse_of: :band
   has_many :audios, dependent: :destroy
 
   attachment :image
