@@ -74,6 +74,7 @@ gem 'paranoia'
 gem 'pry-rails'
 gem 'refile', require: 'refile/rails', github: 'manfe/refile'
 gem 'refile-mini_magick'
+gem 'factory_bot_rails'
 gem 'twitter-bootstrap-rails', git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 group :development, :test do
   gem 'rspec-rails', '~> 3.6'
